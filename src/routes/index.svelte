@@ -7,6 +7,6 @@
   <title>COVID-19</title>
 </svelte:head>
 
-<h1 class="full-width flex-center icon-calendar">Statistic for countries</h1>
+<h1 class="full-width flex-center icon-calendar">COVID-19 statistic</h1>
 <StatTotal />
 <StatList />
