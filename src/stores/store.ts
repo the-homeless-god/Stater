@@ -26,10 +26,10 @@ stats.subscribe(value => {
     )
 
     item.desc = `
-             <span>🔄 Countries: ${item.count} </span>
-             <span>💥 Cases: ${item.case}</span>
-             <span>❌ Deaths: ${item.death}</span>
-             <span>✅ Recov.: ${item.recov}</span>
+             <span>🔄 <b>${item.count}</b> <i>countries</i></span>
+             <span>💥 <b>${item.case}</b> <i>cases</i></span>
+             <span>❌ <b>${item.death}</b> <i>deaths</i></span>
+             <span>✅ <b>${item.recov}</b> <i>recovers</i></span>
     `
 
     totalStat.set(item)

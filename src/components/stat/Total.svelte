@@ -10,7 +10,7 @@
     margin: 10px;
   }
 
-  :global(.total-stat-block b) {
+  .title {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -23,7 +23,7 @@
 
 {#if $totalStat}
   <Box classList={'full-width total-stat-block'}>
-    <b>World statistic</b>
+    <b class="title">World statistic</b>
     {@html $totalStat.desc}
   </Box>
 {/if}

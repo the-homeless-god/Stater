@@ -1,5 +1,4 @@
 <script>
-  import ItemList from 'svelte-item-list/dist/index.js'
   import Box from '../common/Box.svelte'
 
   import { stats } from '../../stores/store.ts'
@@ -22,6 +21,11 @@
     display: flex;
     width: 300px;
   }
+
+  .contry {
+    border-bottom: 1px solid #eee;
+    padding: 12px;
+  }
 </style>
 
 {#if $stats.length > 0}
@@ -29,11 +33,13 @@
 
     {#each $stats as stat}
       <Box classList={'list-stat-block'}>
-        <div class="full-width flex-center">
+        <div class="full-width flex-center contry">
           <img src={stat.icon} alt="country icon" />
           <b>{stat.country}</b>
         </div>
-        {@html stat.desc}
+        <div class="full-width flex-center">
+          {@html stat.desc}
+        </div>
       </Box>
     {/each}
 

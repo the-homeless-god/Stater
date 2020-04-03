@@ -1,5 +1,6 @@
 import RequestTool from 'node-crud-kit/lib/tools/request.tool'
 import RouteEnum from '../enums/route.enum'
+import IStat from '../interfaces/stat.interface'
 
 export default class ApiTool {
   static getStat = async (id: number) => {
@@ -12,13 +13,17 @@ export default class ApiTool {
     let output = []
 
     if (stats && stats.length > 0) {
-      output = stats.map((stat: any) => {
-        stat.desc = `
-        <span>💥 Cases: ${stat.case}</span>
-        <span>❌ Deaths: ${stat.death}</span>
-        <span>✅ Recov.: ${stat.recov}</span>`
-        return stat
-      })
+      output = stats
+        .map((stat: any) => {
+          stat.desc = `
+        <span>💥 ${stat.case ? stat.case : 0}</span>
+        <span>❌ ${stat.death ? stat.death : 0}</span>
+        <span>✅ ${stat.recov ? stat.recov : 0}</span>`
+          return stat
+        })
+        .sort((a: IStat, b: IStat) => {
+          return b.case - a.case
+        })
     }
 
     return output

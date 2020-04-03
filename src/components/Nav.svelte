@@ -54,11 +54,15 @@
     bottom: -1px;
   }
 
-  .nav-list a {
+  .nav-link {
     text-decoration: none;
     padding: 1em 0.5em;
     display: flex;
     align-items: center;
+  }
+
+  .nav-button {
+    padding: 3px;
   }
 </style>
 
@@ -66,13 +70,24 @@
   <ul class="nav-list">
 
     <li>
-      <a
-        class:selected={segment === 'stat' || segment === undefined}
-        href="stat"
+      <span
+        class:selected={segment === undefined}
+        href="."
+        on:click={() => {
+          window.location.href = '/'
+        }}
         rel="prefetch"
-        class="icon-statusnet">
-        Contry stat
-      </a>
+        class="nav-link icon-statusnet">
+        <span>Country stat by</span>
+        <span
+          on:click={() => {
+            window.open('https://vk.com/the_homeless_god', '_blank')
+          }}
+          class="nav-button"
+          href="https://vk.com/the_homeless_god">
+          <b>Marat Zimnurov</b>
+        </span>
+      </span>
     </li>
 
   </ul>
