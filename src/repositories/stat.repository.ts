@@ -16,6 +16,10 @@ export default class StatRepository extends BaseRepository<IStat> {
     })
   }
 
+  public update = async (item: IStat) => {
+    return this.db.update(item, { where: { id: item.id } })
+  }
+
   public cleanupAll = async () => {
     return this.db.destroy({
       where: {

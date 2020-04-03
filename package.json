@@ -65,7 +65,7 @@
     "request": "^2.88.2",
     "sequelize": "^5.21.5",
     "sirv": "^0.4.2",
-    "svelte-item-list": "^2.6.0",
+    "svelte-item-list": "^2.6.3",
     "svelte-select": "^3.6.2",
     "svelte-spinner": "^2.0.2",
     "svelte-touch-datepicker": "^1.2.2",

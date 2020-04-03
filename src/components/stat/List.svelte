@@ -25,18 +25,30 @@
     width: auto !important;
     min-width: 23px;
   }
+
+  :global(.item-description-text) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  :global(.item-description-text span) {
+    width: 100%;
+  }
 </style>
 
 {#if $stats.length > 0}
   <Box classList={'full-width'}>
     <ItemList
-      needPag={false}
+      needPag={true}
       needIndex={true}
-      pageSize={$stats.length}
+      pageSize={10}
       needIcon={true}
+      boldIndex={$stats.length + 1}
       iconProp={'icon'}
       nameProp={'country'}
       pointProp={'case'}
+      descProp={'desc'}
+      descIsHTML={true}
       endpointIsStore={true}
       endpoint={stats}
       sortFunc={(a, b) => {

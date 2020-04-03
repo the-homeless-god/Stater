@@ -7,6 +7,20 @@ export default class ApiTool {
   }
 
   static getStats = async () => {
-    return await RequestTool.fetchJson(RouteEnum.getAllStats, true)
+    let stats = await RequestTool.fetchJson(RouteEnum.getAllStats, true)
+
+    let output = []
+
+    if (stats && stats.length > 0) {
+      output = stats.map((stat: any) => {
+        stat.desc = `
+        <span>💥 Cases: ${stat.case}</span>
+        <span>❌ Deaths: ${stat.death}</span>
+        <span>✅ Recov.: ${stat.recov}</span>`
+        return stat
+      })
+    }
+
+    return output
   }
 }

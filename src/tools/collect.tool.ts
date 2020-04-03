@@ -4,6 +4,7 @@ import IDatabase from '../interfaces/db.interface'
 import StatRepository from '../repositories/stat.repository'
 import IStat from '../interfaces/stat.interface'
 import { parser } from './parser.tool'
+import Logger from 'node-crud-kit/lib/tools/logger.tool'
 var cron = require('node-cron')
 
 export default class CollectTool {
@@ -16,7 +17,7 @@ export default class CollectTool {
   }
 
   init = async () => {
-    cron.schedule('*/15 * * * *', async () => {
+    cron.schedule('*/1 * * * *', async () => {
       let stats: IStat[] = await this.statRepository.getAll()
 
       const browser = await puppeteer.launch({
@@ -33,10 +34,10 @@ export default class CollectTool {
 
       let actStats = await page.evaluate(parser)
 
+      Logger.log(`parsed ${actStats.length} statistics`)
       await browser.close()
 
       if (actStats && actStats.length > 0) {
-        await this.statRepository.cleanupAll()
 
         actStats.map(async act => {
           let existData = stats.find(stat => stat.country === act.country)
