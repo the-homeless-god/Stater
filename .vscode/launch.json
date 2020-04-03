@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach To npm",
+      "type": "node",
+      "request": "attach",
+      "port": 3000,
+      "address": "localhost",
+      "restart": false,
+      "sourceMaps": false,
+      "outFiles": [],
+      "localRoot": "${workspaceRoot}",
+      "remoteRoot": "${workspaceRoot}"
+    }
+  ]
+}
