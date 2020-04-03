@@ -39,9 +39,9 @@
 {#if $stats.length > 0}
   <Box classList={'full-width'}>
     <ItemList
-      needPag={true}
+      needPag={false}
       needIndex={true}
-      pageSize={10}
+      pageSize={$stats.length}
       needIcon={true}
       boldIndex={$stats.length + 1}
       iconProp={'icon'}
