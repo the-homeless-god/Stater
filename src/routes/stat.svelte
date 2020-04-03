@@ -7,6 +7,6 @@
   <title>COVID-19 stat</title>
 </svelte:head>
 
-<h1 class="icon-calendar">Statistic for countries (sync each 15 minutes)</h1>
+<h1 class="full-width flex-center icon-calendar">Statistic for countries (sync each 15 minutes)</h1>
 <StatTotal />
 <StatList />
