@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-  <title>Calendar</title>
+  <title>COVID-19 stat</title>
 </svelte:head>
 
 <h1 class="icon-calendar">Statistic for countries (sync each 15 minutes)</h1>

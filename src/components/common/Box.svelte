@@ -9,7 +9,7 @@
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
     margin: 20px;
     padding: 20px;
-    width: fit-content;
+    max-width: 700px;
     height: fit-content;
   }
 </style>

@@ -34,7 +34,7 @@
 </style>
 
 <svelte:head>
-  <title>COVID-19 stats</title>
+  <title>COVID-19 stat</title>
 </svelte:head>
 
 <h1 class="full-width">Full stat about COVID-19</h1>
