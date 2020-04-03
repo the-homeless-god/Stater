@@ -2,6 +2,7 @@
   import Nav from '../components/Nav.svelte'
 
   export let segment
+  console.log('current segment', segment)
 </script>
 
 <style>
@@ -15,7 +16,7 @@
   }
 </style>
 
-<Nav {segment} />
+<Nav segment={'stat'} />
 
 <main class="full-flex full-width">
   <slot />

@@ -64,15 +64,10 @@
 
 <nav>
   <ul class="nav-list">
-    <li>
-      <a class="icon-info" class:selected={segment === undefined} href=".">
-        Main
-      </a>
-    </li>
 
     <li>
       <a
-        class:selected={segment === 'stat'}
+        class:selected={segment === 'stat' || segment === undefined}
         href="stat"
         rel="prefetch"
         class="icon-statusnet">

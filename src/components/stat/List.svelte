@@ -53,10 +53,7 @@
       endpoint={stats}
       sortFunc={(a, b) => {
         return b.case - a.case
-      }}>
-
-      <div slot="loading">loading...</div>
-    </ItemList>
+      }} />
 
   </Box>
 {/if}
