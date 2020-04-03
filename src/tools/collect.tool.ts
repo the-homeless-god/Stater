@@ -17,12 +17,12 @@ export default class CollectTool {
   }
 
   init = async () => {
-    cron.schedule('*/1 * * * *', async () => {
+    cron.schedule('*/15 * * * *', async () => {
       let stats: IStat[] = await this.statRepository.getAll()
 
       const browser = await puppeteer.launch({
         headless: true,
-        args: ['--hide-scrollbars', '--mute-audio', '--disable-gpu'],
+        args: ['--no-sandbox', '--mute-audio', '--disable-gpu'],
       })
 
       const page = await browser.newPage()
@@ -38,7 +38,6 @@ export default class CollectTool {
       await browser.close()
 
       if (actStats && actStats.length > 0) {
-
         actStats.map(async act => {
           let existData = stats.find(stat => stat.country === act.country)
           if (existData) {

@@ -3,8 +3,6 @@
   import Box from '../common/Box.svelte'
 
   import { totalStat } from '../../stores/store.ts'
-
-  console.log($totalStat)
 </script>
 
 <style>

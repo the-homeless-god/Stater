@@ -13,7 +13,7 @@ class AppConfiguration {
 
   private static instance: AppConfiguration
   public settings: any = {
-    port: process.env.PORT,
+    port: 8082,
     database: {
       successMessage: 'db connection successful',
       url: process.env.DATABASE_URL,

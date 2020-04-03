@@ -39,7 +39,7 @@ npm install
 npm run dev
 ```
 
-- Open localhost:3000 at browser
+- Open localhost:8082 at browser
 
 # Configs:
 
