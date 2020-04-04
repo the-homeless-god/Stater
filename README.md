@@ -1,17 +1,12 @@
 # Stater
 
-COVID-19 statistic
+Statistic application basic on COVID-19 example
 
 # Installation
 
 ## Installation (design)
 
 - [Install Bootstrap Studio](https://bootstrapstudio.io/)
-- Open template that located at the following path:
-
-```shell
-./design/bootstrap/Notifier.bsdesign
-```
 
 ## Installation (web development)
 
@@ -43,17 +38,15 @@ npm run dev
 
 # Configs:
 
-- [Domain](https://www.name.com/account/domain/details/notify.wtf)
-- [Digital Ocean Droplet](https://cloud.digitalocean.com/droplets/186633527/)
 - [Nginx Config](https://www.digitalocean.com/community/questions/how-to-run-node-js-server-with-nginx)
 
 ```shell
 server {
-    if ($host = www.stat.wtf) {
+    if ($host = www.corona.notify.wtf) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
 
-    if ($host = stat.wtf) {
+    if ($host = corona.notify.wtf) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
 
@@ -61,7 +54,7 @@ server {
 
     root /var/www/web/public;
 
-    server_name stat.wtf www.stat.wtf;
+    server_name corona.notify.wtf www.corona.notify.wtf;
     return 301 https://$host$request_uri;
 }
 
@@ -70,9 +63,9 @@ server {
 
     root /var/www/web/public;
 
-    server_name stat.wtf www.stat.wtf;
-    ssl_certificate /etc/letsencrypt/live/stat.wtf/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/stat.wtf/privkey.pem;
+    server_name corona.notify.wtf www.corona.notify.wtf;
+    ssl_certificate /etc/letsencrypt/live/corona.notify.wtf/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/corona.notify.wtf/privkey.pem;
 
     ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
     ssl_prefer_server_ciphers on;
@@ -83,7 +76,7 @@ server {
     }
 
     location /  {
-        proxy_pass    http://localhost:3000;
+        proxy_pass    http://localhost:8082;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
