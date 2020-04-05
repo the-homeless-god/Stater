@@ -61,3 +61,17 @@ a {
   align-items: center;
   flex-wrap: wrap;
 }
+
+.pagination {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.pagination .option {
+  font-weight: 250;
+}
+
+.pagination .option.current {
+  color: #747474;
+  font-weight: 750;
+}

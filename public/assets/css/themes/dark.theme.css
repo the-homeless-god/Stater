@@ -1,6 +1,7 @@
 body,
 main,
-.item-list {
+.item-list,
+.pagination {
   background: #2b2a29;
 }
 
