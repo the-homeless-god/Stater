@@ -7,6 +7,7 @@
   import { dictionary } from '../stores/store.ts'
   import CommonTool from 'node-crud-kit/lib/tools/common.tool'
   import Language from './Language.svelte'
+  import Theme from './Theme.svelte'
 
   onMount(async () => {
     await StatStore.fetchStats()
@@ -15,7 +16,7 @@
 
 <style>
   nav {
-    border-bottom: 1px solid rgba(255, 62, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     font-weight: 300;
     width: 100%;
   }
@@ -23,8 +24,10 @@
   ul {
     margin: 0;
     padding: 0;
+    padding-bottom: 10px;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
   }
 
   /* clearfix */
@@ -37,6 +40,13 @@
     display: block;
     float: left;
     cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0px 15px;
   }
 
   .selected {
@@ -84,10 +94,11 @@
           <b>{$dictionary.author.name}</b>
         </span>
       </span>
-    </li>
 
-    <li>
-      <Language />
+      <span class="full-flex option-picker">
+        <Language />
+        <Theme />
+      </span>
     </li>
 
   </ul>

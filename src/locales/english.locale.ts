@@ -1,4 +1,6 @@
 import ILocale from '../interfaces/locale.interface'
+import DarkTheme from '../themes/dark.theme'
+import LightTheme from '../themes/light.theme'
 
 export default class EnglishLocale implements ILocale {
   short = 'en'
@@ -20,5 +22,10 @@ export default class EnglishLocale implements ILocale {
   }
   language = {
     change: 'Language',
+  }
+  theme = {
+    change: 'Тема оформления',
+    dark: new DarkTheme('en'),
+    light: new LightTheme('en'),
   }
 }

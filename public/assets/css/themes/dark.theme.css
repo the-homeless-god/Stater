@@ -1,0 +1,11 @@
+body,
+main,
+.item-list {
+  background: #2b2a29;
+}
+
+.nav-button,
+.main-title,
+.icon-statusnet {
+  color: #ffffff;
+}

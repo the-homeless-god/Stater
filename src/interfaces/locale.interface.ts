@@ -1,3 +1,5 @@
+import ITheme from './theme.interface'
+
 export default interface ILocale {
   short: string
   prefix: string
@@ -13,5 +15,10 @@ export default interface ILocale {
   }
   language: {
     change: string
+  }
+  theme: {
+    change: string
+    dark: ITheme
+    light: ITheme
   }
 }

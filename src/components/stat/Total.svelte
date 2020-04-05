@@ -5,9 +5,9 @@
 
   import { totalStat, stats, dictionary } from '../../stores/store.ts'
 
-  stats.subscribe(value => {
-    if (value && value.length > 0) {
-      let item = value.reduce(
+  const updTotal = (dictElement, statistics) => {
+    if (statistics && statistics.length > 0) {
+      let item = statistics.reduce(
         (accum, curr) => {
           accum.case += curr.case
           accum.death += curr.death
@@ -28,19 +28,19 @@
       let items = [
         CommonTool.convertNumberStr(
           item.count,
-          $dictionary.total.items[0].forms,
+          dictElement.total.items[0].forms,
         ),
         CommonTool.convertNumberStr(
           item.case,
-          $dictionary.total.items[1].forms,
+          dictElement.total.items[1].forms,
         ),
         CommonTool.convertNumberStr(
           item.death,
-          $dictionary.total.items[2].forms,
+          dictElement.total.items[2].forms,
         ),
         CommonTool.convertNumberStr(
           item.recov,
-          $dictionary.total.items[3].forms,
+          dictElement.total.items[3].forms,
         ),
       ]
 
@@ -58,6 +58,14 @@
 
       totalStat.set(item)
     }
+  }
+
+  dictionary.subscribe(value => {
+    updTotal(value, $stats)
+  })
+
+  stats.subscribe(value => {
+    updTotal($dictionary, value)
   })
 </script>
 

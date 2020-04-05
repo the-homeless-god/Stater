@@ -26,10 +26,22 @@
     border-bottom: 1px solid #eee;
     padding: 12px;
   }
+
+  .item-list {
+    margin: 20px;
+    padding: 20px;
+    max-width: fit-content;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 </style>
 
 {#if $stats.length > 0}
-  <Box classList={'full-width'}>
+  <div class="full-width item-list">
 
     {#each $stats as stat}
       <Box classList={'list-stat-block'}>
@@ -43,5 +55,5 @@
       </Box>
     {/each}
 
-  </Box>
+  </div>
 {/if}

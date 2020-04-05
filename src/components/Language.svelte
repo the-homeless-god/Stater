@@ -44,8 +44,9 @@
 </script>
 
 <Select
-  containerStyles="min-width: 50px; width: 100%;"
+  containerStyles="min-width: 50px; margin-right: 10px;"
   placeholder={$dictionary.language.change}
   {items}
+  isClearable={false}
   on:select={handleSelect}
   bind:selectedValue />

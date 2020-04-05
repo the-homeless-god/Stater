@@ -1,4 +1,6 @@
 import ILocale from '../interfaces/locale.interface'
+import DarkTheme from '../themes/dark.theme'
+import LightTheme from '../themes/light.theme'
 
 export default class RussianLocale implements ILocale {
   short = 'ru'
@@ -20,5 +22,10 @@ export default class RussianLocale implements ILocale {
   }
   language = {
     change: 'Язык',
+  }
+  theme = {
+    change: 'Тема оформления',
+    dark: new DarkTheme('ru'),
+    light: new LightTheme('ru'),
   }
 }
