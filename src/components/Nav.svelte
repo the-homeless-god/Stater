@@ -36,6 +36,18 @@
     clear: both;
   }
 
+  @media (max-width: 420px) {
+    li {
+      justify-content: center;
+    }
+  }
+
+  @media (min-width: 421px) {
+    li {
+      justify-content: space-between;
+    }
+  }
+
   li {
     display: block;
     float: left;
@@ -44,7 +56,6 @@
     margin-right: 10px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     padding: 0px 15px;
   }
