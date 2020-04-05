@@ -4,7 +4,9 @@
   import { onMount } from 'svelte'
   import StatStore from '../stores/stat.store.ts'
 
+  import { dictionary } from '../stores/store.ts'
   import CommonTool from 'node-crud-kit/lib/tools/common.tool'
+  import Language from './Language.svelte'
 
   onMount(async () => {
     await StatStore.fetchStats()
@@ -73,21 +75,20 @@
       <span
         class:selected={segment === undefined}
         href="."
-        on:click={() => {
-          window.location.href = '/'
-        }}
         rel="prefetch"
         class="nav-link icon-statusnet">
-        <span>Country stat by</span>
         <span
           on:click={() => {
-            window.open('https://vk.com/the_homeless_god', '_blank')
+            window.open($dictionary.author.link, '_blank')
           }}
-          class="nav-button"
-          href="https://vk.com/the_homeless_god">
-          <b>Marat Zimnurov</b>
+          class="nav-button">
+          <b>{$dictionary.author.name}</b>
         </span>
       </span>
+    </li>
+
+    <li>
+      <Language />
     </li>
 
   </ul>

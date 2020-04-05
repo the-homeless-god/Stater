@@ -4,7 +4,7 @@ services:
     env_file:
       - .env
     build: .
-    command: npm run dev
+    command: npm run pm
     volumes:
       - .:/usr/app/
       - /usr/app/node_modules
