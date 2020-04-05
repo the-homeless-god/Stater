@@ -7,7 +7,7 @@
 <style>
   :global(.list-stat-block span) {
     margin: 10px;
-    width: 100%;
+    width: auto;
     display: flex;
     justify-content: center;
     align-items: center;

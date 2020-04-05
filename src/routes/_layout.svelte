@@ -1,5 +1,6 @@
 <script>
   import Nav from '../components/Nav.svelte'
+  import { dictionary } from '../stores/store.ts'
 
   export let segment
   console.log('current segment', segment)
