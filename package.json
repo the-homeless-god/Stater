@@ -1,7 +1,7 @@
 {
   "name": "corona-stat",
   "description": "Statistic of corona",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "repository": "Zimtir/Stater",
   "author": "Marat Zimnurov <zimit@mail.ru>",
