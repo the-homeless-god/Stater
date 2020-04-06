@@ -7,6 +7,7 @@ import io from 'socket.io'
 import CommonTool from 'node-crud-kit/lib/tools/common.tool'
 import StatRepository from '../repositories/stat.repository'
 import IStat from '../interfaces/stat.interface'
+import SocketTool from '../tools/socket.tool'
 var cron = require('node-cron')
 
 export default class VisitRouter extends BaseRouter<IVisit> {
@@ -15,7 +16,6 @@ export default class VisitRouter extends BaseRouter<IVisit> {
   statRepository: StatRepository
   userCount: number = 0
   stats: IStat[] = []
-  socket: any
 
   constructor(db: IDatabase) {
     super(db)
@@ -25,14 +25,13 @@ export default class VisitRouter extends BaseRouter<IVisit> {
     this.statRepository = new StatRepository(this.db.Stat)
     this.initStats()
 
-    cron.schedule('* * * * *', async () => {
-      await this.initStats()
-    })
+    SocketTool.getInstance().initStats = this.initStats
+    this.initStats()
   }
 
   initStats = async () => {
-    this.stats = await this.statRepository.getAll()
-    this.stats = this.stats
+    let tempStats = await this.statRepository.getAll()
+    this.stats = tempStats
       .map((stat: any) => {
         stat.desc = `
           <span>💥 ${stat.case ? stat.case : 0}</span>
@@ -44,15 +43,16 @@ export default class VisitRouter extends BaseRouter<IVisit> {
         return b.case - a.case
       })
 
-    this.socket.sockets.emit('stats updated', {
-      stats: this.stats,
-    })
+    if (SocketTool.getInstance().socket) {
+      SocketTool.getInstance().socket.sockets.emit('stats updated', {
+        stats: this.stats,
+      })
+    }
   }
 
   initSocket = (server: any) => {
-    this.socket = io(server)
-
-    this.socket.on('connection', async (socket: any) => {
+    SocketTool.getInstance().socket = io(server)
+    SocketTool.getInstance().socket.on('connection', async (socket: any) => {
       ++this.userCount
 
       await this.repository.add({ time: new Date() })

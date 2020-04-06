@@ -66,9 +66,9 @@
     "sirv": "^0.4.2",
     "socket.io": "^2.3.0",
     "svelte-item-list": "^2.6.7",
-    "svelte-spinner": "^2.0.2",
     "svelte-touch-datepicker": "^1.2.2",
     "svelte-touch-timepicker": "^1.0.0",
+    "svelte-spinner": "^2.0.2",
     "sweetalert": "^2.1.2",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.8.3"

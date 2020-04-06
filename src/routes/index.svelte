@@ -1,7 +1,8 @@
 <script>
   import StatList from '../components/stat/List.svelte'
   import StatTotal from '../components/stat/Total.svelte'
-  import { dictionary } from '../stores/store.ts'
+  import { dictionary, stats } from '../stores/store.ts'
+  import Spinner from 'svelte-spinner'
 </script>
 
 <style>
@@ -25,5 +26,9 @@
 </svelte:head>
 
 <h1 class="main-title icon-crown">{$dictionary.subtitle}</h1>
-<StatTotal />
-<StatList />
+{#if $stats && $stats.length > 0}
+  <StatTotal />
+  <StatList />
+{:else}
+  <Spinner size="100" speed="750" color="#A82124" thickness="2" gap="40" />
+{/if}

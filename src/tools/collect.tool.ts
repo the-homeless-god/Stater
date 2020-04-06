@@ -5,6 +5,7 @@ import StatRepository from '../repositories/stat.repository'
 import IStat from '../interfaces/stat.interface'
 import { parser } from './parser.tool'
 import Logger from 'node-crud-kit/lib/tools/logger.tool'
+import SocketTool from './socket.tool'
 var cron = require('node-cron')
 
 export default class CollectTool {
@@ -17,7 +18,7 @@ export default class CollectTool {
   }
 
   init = async () => {
-    cron.schedule('* * * * *', async () => {
+    cron.schedule('*/10 * * * *', async () => {
       let stats: IStat[] = await this.statRepository.getAll()
 
       const browser = await puppeteer.launch({
@@ -37,23 +38,26 @@ export default class CollectTool {
       Logger.log(`parsed ${actStats.length} statistics`)
       await browser.close()
 
-      if (actStats && actStats.length > 0) {
-        actStats.map(async act => {
-          let existData = stats.find(stat => stat.country === act.country)
-          if (existData) {
-            await this.statRepository.update({
-              id: existData.id,
-              country: existData.country,
-              icon: act.icon,
-              case: act.case,
-              death: act.death,
-              recov: act.recov,
-              time: new Date(),
-            })
-          } else {
-            await this.statRepository.add(act)
-          }
-        })
+      for (let i = 0; i < actStats.length; i++) {
+        let existData = stats.find(stat => stat.country === actStats[i].country)
+        if (existData) {
+          await this.statRepository.update({
+            id: existData.id,
+            country: existData.country,
+            icon: actStats[i].icon,
+            case: actStats[i].case,
+            death: actStats[i].death,
+            recov: actStats[i].recov,
+            time: new Date(),
+          })
+        } else {
+          await this.statRepository.add(actStats[i])
+        }
+      }
+
+      let socketTool = SocketTool.getInstance()
+      if (socketTool.socket) {
+        socketTool.initStats()
       }
     })
   }
