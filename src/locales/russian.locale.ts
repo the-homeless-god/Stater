@@ -28,4 +28,8 @@ export default class RussianLocale implements ILocale {
     dark: new DarkTheme('ru'),
     light: new LightTheme('ru'),
   }
+  visit = {
+    now: 'Онлайн',
+    total: 'За всё время',
+  }
 }

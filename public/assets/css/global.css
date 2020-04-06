@@ -75,3 +75,14 @@ a {
   color: #747474;
   font-weight: 750;
 }
+
+.btn {
+  background-color: #fff;
+  padding: 10px 15px;
+  max-width: fit-content;
+  height: fit-content;
+  margin: 0px 10px;
+
+  border: solid #d8dbdf 1px;
+  border-radius: 3px;
+}

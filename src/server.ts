@@ -4,13 +4,45 @@ import { initModules, initServer } from './tools/server.tool'
 import RouterTool from './tools/router.tool'
 import listEndpoints from 'express-list-endpoints'
 
-const app = express()
+import dotenv from 'dotenv'
+dotenv.config()
 
-app.use('/', new RouterTool().router)
+export default class ServerInterop {
+  static getInstance() {
+    if (!ServerInterop.instance) {
+      ServerInterop.instance = new ServerInterop()
+    }
+    return ServerInterop.instance
+  }
 
-// !!! REMOVE BEFORE DEPLOY TO PRODUCTION
-app.use('/api/all', (req: any, res: any) => res.send(listEndpoints(app)))
-initModules(app)
+  server: any
+  app: any
+  router: any
 
-const server = createServer(app)
-initServer(server)
+  constructor() {
+    this.initApp()
+    this.hostApp()
+    this.router.initSocket(this.server)
+  }
+
+  private initApp = () => {
+    this.app = express()
+    this.router = new RouterTool()
+    this.app.use('/', this.router.router)
+
+    // !!! REMOVE BEFORE DEPLOY TO PRODUCTION
+    this.app.use('/api/all', (req: any, res: any) =>
+      res.send(listEndpoints(this.app)),
+    )
+
+    initModules(this.app)
+  }
+
+  private hostApp = () => {
+    this.server = createServer(this.app)
+    initServer(this.server)
+  }
+  private static instance: ServerInterop
+}
+
+ServerInterop.getInstance()

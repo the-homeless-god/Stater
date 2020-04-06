@@ -21,4 +21,8 @@ export default interface ILocale {
     dark: ITheme
     light: ITheme
   }
+  visit: {
+    now: string
+    total: string
+  }
 }

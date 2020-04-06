@@ -1,9 +1,15 @@
-import BaseRepository from '../bases/base.repository'
+import BaseRepository from 'node-crud-kit/lib/bases/base.repository'
 import IStat from '../interfaces/stat.interface'
 import { Op } from 'sequelize'
+import IDatabase from '../interfaces/db.interface'
 
 export default class StatRepository extends BaseRepository<IStat> {
   db: any
+
+  public constructor(db: any) {
+    super(db)
+    this.db = db
+  }
 
   public add = async (stat: IStat) => {
     return this.db.create({

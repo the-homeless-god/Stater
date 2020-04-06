@@ -17,7 +17,7 @@ export default class CollectTool {
   }
 
   init = async () => {
-    cron.schedule('*/15 * * * *', async () => {
+    cron.schedule('* * * * *', async () => {
       let stats: IStat[] = await this.statRepository.getAll()
 
       const browser = await puppeteer.launch({

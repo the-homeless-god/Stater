@@ -28,4 +28,8 @@ export default class EnglishLocale implements ILocale {
     dark: new DarkTheme('en'),
     light: new LightTheme('en'),
   }
+  visit = {
+    now: 'Online',
+    total: 'Total',
+  }
 }

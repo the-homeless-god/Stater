@@ -9,11 +9,14 @@ import Logger from 'node-crud-kit/lib/tools/logger.tool'
 import StatRouter from '../routes/stat.route'
 import CollectTool from './collect.tool'
 import IDatabase from '../interfaces/db.interface'
+import VisitRouter from '../routes/visit.route'
 
 export default class RouterTool {
   db: IDatabase = connect()
   statRouter = new StatRouter(this.db)
+  visitRouter = new VisitRouter(this.db)
   collectTool = new CollectTool(this.db)
+
   configuration = AppConfiguration.getInstance()
 
   public router = express.Router()
@@ -57,6 +60,10 @@ export default class RouterTool {
     this.initStatRoutes()
 
     this.collectTool.init()
+  }
+
+  initSocket = (server: any) => {
+    this.visitRouter.initSocket(server)
   }
 
   initStatRoutes = () => {

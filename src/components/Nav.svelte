@@ -2,16 +2,12 @@
   export let segment
 
   import { onMount } from 'svelte'
-  import StatStore from '../stores/stat.store.ts'
 
   import { dictionary } from '../stores/store.ts'
   import CommonTool from 'node-crud-kit/lib/tools/common.tool'
   import Language from './Language.svelte'
   import Theme from './Theme.svelte'
-
-  onMount(async () => {
-    await StatStore.fetchStats()
-  })
+  import VisitNow from './visit/Now.svelte'
 </script>
 
 <style>
@@ -107,6 +103,7 @@
       </span>
 
       <span class="full-flex option-picker">
+        <VisitNow />
         <Language />
         <Theme />
       </span>

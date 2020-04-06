@@ -3,6 +3,7 @@ import Logger from 'node-crud-kit/lib/tools/logger.tool'
 import StatEntity from '../entities/stat.entity'
 
 import AppConfiguration from '../tools/config.tool'
+import VisitEntity from '../entities/visit.entity'
 const configuration = AppConfiguration.getInstance()
 
 Logger.log(`db host: ${process.env.DB_HOST}`)
@@ -24,6 +25,7 @@ export const connect = () => {
   const opts = db.options
 
   const Stat = sequelize.define(db.table.stat, StatEntity, opts)
+  const Visit = sequelize.define(db.table.visit, VisitEntity, opts)
 
   sequelize
     .sync()
@@ -34,5 +36,6 @@ export const connect = () => {
 
   return {
     Stat: Stat,
+    Visit: Visit,
   }
 }
