@@ -34,7 +34,7 @@ export const parser = () => {
             let a = cell.querySelector('a')
             if (a && a.firstChild) {
               if (a.firstChild.textContent) {
-                item.country = a.firstChild.textContent.trim()
+                item.country = a.firstChild.textContent.replace('(', '').trim()
               }
             }
             break
