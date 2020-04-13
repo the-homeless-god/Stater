@@ -34,9 +34,15 @@ export default class VisitRouter extends BaseRouter<IVisit> {
     this.stats = tempStats
       .map((stat: any) => {
         stat.desc = `
-          <span>💥 ${stat.case ? stat.case : 0}</span>
-          <span>❌ ${stat.death ? stat.death : 0}</span>
-          <span>✅ ${stat.recov ? stat.recov : 0}</span>`
+          <span>💥 ${
+            stat.case ? CommonTool.numberWithSpaces(stat.case) : 0
+          }</span>
+          <span>❌ ${
+            stat.death ? CommonTool.numberWithSpaces(stat.death) : 0
+          }</span>
+          <span>✅ ${
+            stat.recov ? CommonTool.numberWithSpaces(stat.recov) : 0
+          }</span>`
         return stat
       })
       .sort((a: IStat, b: IStat) => {

@@ -50,10 +50,10 @@
       }
 
       item.desc = `
-            ${getSubRow('🔄 ', item.count, items[0])}
-            ${getSubRow('💥 ', item.case, items[1])}
-            ${getSubRow('❌ ', item.death, items[2])}
-            ${getSubRow('✅ ', item.recov, items[3])}
+            ${getSubRow('🔄 ', CommonTool.numberWithSpaces(item.count), items[0])}
+            ${getSubRow('💥 ', CommonTool.numberWithSpaces(item.case), items[1])}
+            ${getSubRow('❌ ', CommonTool.numberWithSpaces(item.death), items[2])}
+            ${getSubRow('✅ ', CommonTool.numberWithSpaces(item.recov), items[3])}
       `
 
       totalStat.set(item)
