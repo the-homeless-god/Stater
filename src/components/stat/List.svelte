@@ -53,7 +53,7 @@
       },
       pagination: {
         enabled: true,
-        pageSize: $itemCount,
+        pageSize: $itemCount > 0 ? $itemCount : $stats.length,
         currentPageStore: writable(1),
         step: {
           limit: 1,
@@ -97,7 +97,7 @@
   onMount(initConfiguration)
 
   itemCount.subscribe(value => {
-    if (configuration) {
+    if (configuration && value > 0) {
       configuration.global.isVisible = false
       configuration.pagination.pageSize = value
       configuration.pagination.currentPageStore.set(0)

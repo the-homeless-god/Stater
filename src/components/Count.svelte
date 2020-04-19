@@ -47,17 +47,20 @@
   const updateElements = () => {
     elements = Array.from(Array($stats.length + 1).keys())
 
-    items = elements.map(element => {
-      let text = CommonTool.convertNumberStr(
-        element,
-        $dictionary.item.count.forms,
-      )
-      let elementValue = CommonTool.numberWithSpaces(element)
+    items = elements.reduce((acc, element) => {
+      if (element !== 0) {
+        let text = CommonTool.convertNumberStr(
+          element,
+          $dictionary.item.count.forms,
+        )
+        let elementValue = CommonTool.numberWithSpaces(element)
 
-      let textValue = `👁${elementValue} ${text}`
+        let textValue = `👁${elementValue} ${text}`
 
-      return { value: element, label: textValue }
-    })
+        acc.push({ value: element, label: textValue })
+      }
+      return acc
+    }, [])
   }
 
   const updateValueByStore = () => {
