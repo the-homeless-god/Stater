@@ -17,48 +17,61 @@ export default class CollectTool {
     this.statRepository = new StatRepository(db.Stat)
   }
 
+  parse = async (withCleanup: boolean = false) => {
+    let stats: IStat[] = await this.statRepository.getAll()
+
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--mute-audio', '--disable-gpu'],
+    })
+
+    const page = await browser.newPage()
+
+    await page.setDefaultNavigationTimeout(0)
+
+    await page.goto(
+      'https://en.wikipedia.org/wiki/2019%E2%80%9320_coronavirus_pandemic_by_country_and_territory',
+      { waitUntil: 'load' },
+    )
+
+    let actStats = await page.evaluate(parser)
+
+    Logger.log(`parsed ${actStats.length} statistics`)
+    await browser.close()
+
+    if (withCleanup && actStats.length > 0) {
+      await this.statRepository.cleanupAll()
+    }
+
+    for (let i = 0; i < actStats.length; i++) {
+      let existData = stats.find(stat => stat.country === actStats[i].country)
+      if (existData) {
+        await this.statRepository.update({
+          id: existData.id,
+          country: existData.country,
+          icon: actStats[i].icon,
+          case: actStats[i].case,
+          death: actStats[i].death,
+          recov: actStats[i].recov,
+          time: new Date(),
+        })
+      } else {
+        await this.statRepository.add(actStats[i])
+      }
+    }
+
+    let socketTool = SocketTool.getInstance()
+    if (socketTool.socket) {
+      socketTool.initStats()
+    }
+  }
+
   init = async () => {
-    cron.schedule('*/10 * * * *', async () => {
-      let stats: IStat[] = await this.statRepository.getAll()
-
-      const browser = await puppeteer.launch({
-        headless: true,
-        args: ['--no-sandbox', '--mute-audio', '--disable-gpu'],
-      })
-
-      const page = await browser.newPage()
-
-      await page.goto(
-        'https://en.wikipedia.org/wiki/2019%E2%80%9320_coronavirus_pandemic_by_country_and_territory',
-        { waitUntil: 'load' },
-      )
-
-      let actStats = await page.evaluate(parser)
-
-      Logger.log(`parsed ${actStats.length} statistics`)
-      await browser.close()
-
-      for (let i = 0; i < actStats.length; i++) {
-        let existData = stats.find(stat => stat.country === actStats[i].country)
-        if (existData) {
-          await this.statRepository.update({
-            id: existData.id,
-            country: existData.country,
-            icon: actStats[i].icon,
-            case: actStats[i].case,
-            death: actStats[i].death,
-            recov: actStats[i].recov,
-            time: new Date(),
-          })
-        } else {
-          await this.statRepository.add(actStats[i])
-        }
-      }
-
-      let socketTool = SocketTool.getInstance()
-      if (socketTool.socket) {
-        socketTool.initStats()
-      }
+    cron.schedule('*/5 * * * *', async () => {
+      await this.parse(false)
+    })
+    cron.schedule('0 0 0 * * *', async () => {
+      await this.parse(true)
     })
   }
 }
