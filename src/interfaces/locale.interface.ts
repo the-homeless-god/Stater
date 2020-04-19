@@ -20,9 +20,16 @@ export default interface ILocale {
     change: string
     dark: ITheme
     light: ITheme
+    mountain: ITheme
   }
   visit: {
     now: string
     total: string
+  }
+  item: {
+    count: {
+      change: string
+      forms: string[]
+    }
   }
 }

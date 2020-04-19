@@ -1,90 +1,110 @@
 <script>
   import Box from '../common/Box.svelte'
 
-  import { stats } from '../../stores/store.ts'
+  import { stats, itemCount } from '../../stores/store.ts'
   import ItemList from 'svelte-item-list/dist/index.js'
+  import { onMount } from 'svelte'
+  import { writable } from 'svelte/store'
+  import Spinner from 'svelte-spinner'
 
-  let configuration = {
-    global: {
-      classListModel: {
-        root: 'item-list__container',
-        header: 'item-list__header_text',
-        item: {
-          root: 'item-list__item-text',
-          description: {
-            name: 'item-list_item-name-text',
-            root: 'item-list__description-root',
-            text: 'item-list__description-text',
+  let configuration = null
+
+  const initConfiguration = () => {
+    configuration = {
+      global: {
+        classListModel: {
+          root: 'item-list__container',
+          header: 'item-list__header_text',
+          item: {
+            root: 'item-list__item-text',
+            description: {
+              name: 'item-list_item-name-text',
+              root: 'item-list__description-root',
+              text: 'item-list__description-text',
+            },
+            icon: 'item-list__item-icon',
+            index: 'item-list__item-index',
+            point: 'item-list__item-point',
           },
-          icon: 'item-list__item-icon',
-          index: 'item-list__item-index',
-          point: 'item-list__item-point',
-        },
-        pagination: {
-          root: 'item-list__pagination',
-          option: 'pagination__option',
-          arrow: {
-            doubleLeft: 'icon-angle-double-left',
-            left: 'icon-angle-left',
-            right: 'icon-angle-right',
-            doubleRight: 'icon-angle-double-right',
+          pagination: {
+            root: 'item-list__pagination',
+            option: 'pagination__option',
+            arrow: {
+              doubleLeft: 'icon-angle-double-left',
+              left: 'icon-angle-left',
+              right: 'icon-angle-right',
+              doubleRight: 'icon-angle-double-right',
+            },
           },
         },
+        body: {
+          enabled: false,
+        },
+        isVisible: true,
+        header: {
+          enabled: false,
+          text: '',
+        },
       },
-      body: {
-        enabled: false,
+      endpoint: {
+        isStore: true,
+        value: stats,
+        sortFunction: (a, b) => {},
       },
-      isVisible: true,
-      header: {
-        enabled: false,
-        text: '',
-      },
-    },
-    endpoint: {
-      isStore: true,
-      value: stats,
-      sortFunction: (a, b) => {},
-    },
-    pagination: {
-      enabled: true,
-      pageSize: 10,
-      step: {
-        limit: 1,
+      pagination: {
         enabled: true,
+        pageSize: $itemCount,
+        currentPageStore: writable(1),
+        step: {
+          limit: 1,
+          enabled: true,
+        },
       },
-    },
-    item: {
-      clickFunction: () => {},
-      bold: {
-        enabled: true,
-        count: 0,
+      item: {
+        clickFunction: () => {},
+        bold: {
+          enabled: true,
+          count: 0,
+        },
+        name: {
+          enabled: true,
+          prop: 'name',
+        },
+        description: {
+          enabled: true,
+          prop: 'description',
+          isHTML: true,
+        },
+        point: {
+          enabled: false,
+          prop: 'point',
+          isTimeago: false,
+        },
+        icon: {
+          enabled: true,
+          prop: 'icon',
+        },
+        index: {
+          enabled: false,
+        },
+        light: {
+          prop: 'light',
+        },
       },
-      name: {
-        enabled: true,
-        prop: 'name',
-      },
-      description: {
-        enabled: true,
-        prop: 'description',
-        isHTML: true,
-      },
-      point: {
-        enabled: false,
-        prop: 'point',
-        isTimeago: false,
-      },
-      icon: {
-        enabled: true,
-        prop: 'icon',
-      },
-      index: {
-        enabled: false,
-      },
-      light: {
-        prop: 'light',
-      },
-    },
+    }
   }
+
+  onMount(initConfiguration)
+
+  itemCount.subscribe(value => {
+    if (configuration) {
+      configuration.global.isVisible = false
+      configuration.pagination.pageSize = value
+      configuration.pagination.currentPageStore.set(0)
+      configuration.pagination.currentPageStore.set(1)
+      configuration.global.isVisible = true
+    }
+  })
 </script>
 
 <style>
@@ -123,12 +143,11 @@
   }
 </style>
 
-{#if $stats.length > 0}
+{#if $stats.length > 0 && configuration}
   <div class="full-width item-list">
 
     <ItemList {configuration} let:items>
       <div slot="loading">loading...</div>
-
       <div class="full-flex full-width" slot="body">
         {#each items as item}
           <Box classList={'list-stat-block'}>
@@ -145,4 +164,6 @@
     </ItemList>
 
   </div>
+{:else}
+  <Spinner size="100" speed="750" color="#A82124" thickness="2" gap="40" />
 {/if}

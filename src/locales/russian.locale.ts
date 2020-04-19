@@ -34,4 +34,10 @@ export default class RussianLocale implements ILocale {
     now: 'Онлайн',
     total: 'За всё время',
   }
+  item = {
+    count: {
+      change: 'Количество стран',
+      forms: ['страна', 'страны', 'стран'],
+    },
+  }
 }

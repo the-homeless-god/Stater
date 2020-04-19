@@ -7,6 +7,7 @@
   import CommonTool from 'node-crud-kit/lib/tools/common.tool'
   import Language from './Language.svelte'
   import Theme from './Theme.svelte'
+  import Count from './Count.svelte'
   import VisitNow from './visit/Now.svelte'
 </script>
 
@@ -104,6 +105,7 @@
 
       <span class="full-flex option-picker">
         <VisitNow />
+        <Count />
         <Language />
         <Theme />
       </span>

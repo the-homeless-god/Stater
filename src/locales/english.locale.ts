@@ -25,13 +25,19 @@ export default class EnglishLocale implements ILocale {
     change: 'Language',
   }
   theme = {
-    change: 'Тема оформления',
+    change: 'Site theme',
     dark: new DarkTheme('en'),
     light: new LightTheme('en'),
-    mountain: new MountainTheme('en')
+    mountain: new MountainTheme('en'),
   }
   visit = {
     now: 'Online',
     total: 'Total',
+  }
+  item = {
+    count: {
+      change: 'Country count',
+      forms: ['country', 'countries', 'countries'],
+    },
   }
 }

@@ -22,7 +22,12 @@ export default class CollectTool {
 
     const browser = await puppeteer.launch({
       headless: true,
-      args: ['--no-sandbox', '--mute-audio', '--disable-gpu'],
+      args: [
+        '--no-sandbox',
+        '--mute-audio',
+        '--disable-gpu',
+        '--single-process',
+      ],
     })
 
     const page = await browser.newPage()
@@ -67,7 +72,7 @@ export default class CollectTool {
   }
 
   init = async () => {
-    cron.schedule('*/5 * * * *', async () => {
+    cron.schedule('*/35 * * * *', async () => {
       await this.parse(false)
     })
     cron.schedule('0 0 0 * * *', async () => {
