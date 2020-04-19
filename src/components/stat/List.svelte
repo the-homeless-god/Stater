@@ -3,6 +3,88 @@
 
   import { stats } from '../../stores/store.ts'
   import ItemList from 'svelte-item-list/dist/index.js'
+
+  let configuration = {
+    global: {
+      classListModel: {
+        root: 'item-list__container',
+        header: 'item-list__header_text',
+        item: {
+          root: 'item-list__item-text',
+          description: {
+            name: 'item-list_item-name-text',
+            root: 'item-list__description-root',
+            text: 'item-list__description-text',
+          },
+          icon: 'item-list__item-icon',
+          index: 'item-list__item-index',
+          point: 'item-list__item-point',
+        },
+        pagination: {
+          root: 'item-list__pagination',
+          option: 'pagination__option',
+          arrow: {
+            doubleLeft: 'icon-angle-double-left',
+            left: 'icon-angle-left',
+            right: 'icon-angle-right',
+            doubleRight: 'icon-angle-double-right',
+          },
+        },
+      },
+      body: {
+        enabled: false,
+      },
+      isVisible: true,
+      header: {
+        enabled: false,
+        text: '',
+      },
+    },
+    endpoint: {
+      isStore: true,
+      value: stats,
+      sortFunction: (a, b) => {},
+    },
+    pagination: {
+      enabled: true,
+      pageSize: 10,
+      step: {
+        limit: 1,
+        enabled: true,
+      },
+    },
+    item: {
+      clickFunction: () => {},
+      bold: {
+        enabled: true,
+        count: 0,
+      },
+      name: {
+        enabled: true,
+        prop: 'name',
+      },
+      description: {
+        enabled: true,
+        prop: 'description',
+        isHTML: true,
+      },
+      point: {
+        enabled: false,
+        prop: 'point',
+        isTimeago: false,
+      },
+      icon: {
+        enabled: true,
+        prop: 'icon',
+      },
+      index: {
+        enabled: false,
+      },
+      light: {
+        prop: 'light',
+      },
+    },
+  }
 </script>
 
 <style>
@@ -44,15 +126,7 @@
 {#if $stats.length > 0}
   <div class="full-width item-list">
 
-    <ItemList
-      needPag={true}
-      pageSize={9}
-      needIndex={false}
-      needPoint={false}
-      needBody={false}
-      endpointIsStore={true}
-      endpoint={stats}
-      let:items>
+    <ItemList {configuration} let:items>
       <div slot="loading">loading...</div>
 
       <div class="full-flex full-width" slot="body">
