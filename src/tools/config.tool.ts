@@ -3,7 +3,7 @@ import Route from '../classes/route.class'
 import dotenv from 'dotenv'
 dotenv.config()
 
-class AppConfiguration {
+export default class AppConfiguration {
   static getInstance() {
     if (!AppConfiguration.instance) {
       AppConfiguration.instance = new AppConfiguration()
@@ -37,5 +37,3 @@ class AppConfiguration {
 
   public routes: Route[] = []
 }
-
-export default AppConfiguration
