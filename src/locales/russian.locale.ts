@@ -1,6 +1,7 @@
 import ILocale from '../interfaces/locale.interface'
 import DarkTheme from '../themes/dark.theme'
 import LightTheme from '../themes/light.theme'
+import MountainTheme from '../themes/mountain.theme'
 
 export default class RussianLocale implements ILocale {
   short = 'ru'
@@ -27,6 +28,7 @@ export default class RussianLocale implements ILocale {
     change: 'Тема оформления',
     dark: new DarkTheme('ru'),
     light: new LightTheme('ru'),
+    mountain: new MountainTheme('ru'),
   }
   visit = {
     now: 'Онлайн',

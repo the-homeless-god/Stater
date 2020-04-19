@@ -1,0 +1,17 @@
+html {
+  background: url(/assets/img/mountain-bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.pagination {
+  background: #2b2a29;
+}
+
+.nav-button,
+.main-title,
+.icon-statusnet {
+  color: #ffffff;
+}

@@ -2,8 +2,6 @@
   import Select from 'svelte-select'
   import { onMount } from 'svelte'
   import { dictionary, theme } from '../stores/store.ts'
-  import DarkTheme from '../themes/dark.theme.ts'
-  import LightTheme from '../themes/light.theme.ts'
   import CommonTool from 'node-crud-kit/lib/tools/common.tool'
 
   let themes = []
@@ -46,7 +44,7 @@
   }
 
   dictionary.subscribe(value => {
-    themes = [value.theme.light, value.theme.dark]
+    themes = [value.theme.light, value.theme.dark, value.theme.mountain]
     items = themes.map(themeItem => {
       return { value: themeItem.short, label: themeItem.prefix }
     })

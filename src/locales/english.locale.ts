@@ -1,6 +1,7 @@
 import ILocale from '../interfaces/locale.interface'
 import DarkTheme from '../themes/dark.theme'
 import LightTheme from '../themes/light.theme'
+import MountainTheme from '../themes/mountain.theme'
 
 export default class EnglishLocale implements ILocale {
   short = 'en'
@@ -27,6 +28,7 @@ export default class EnglishLocale implements ILocale {
     change: 'Тема оформления',
     dark: new DarkTheme('en'),
     light: new LightTheme('en'),
+    mountain: new MountainTheme('en')
   }
   visit = {
     now: 'Online',
