@@ -17,6 +17,10 @@ Statistic application basic on COVID-19 example
 - [Install SSL CertBot to Ubuntu](https://www.digitalocean.com/community/tutorials/nginx-let-s-encrypt-ubuntu-18-04-ru)
 - [Install Postgres](https://www.postgresql.org/download/)
 - [Install Postgres to Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04-ru)
+- [Install Graphana](https://grafana.com/docs/grafana/latest/guides/getting_started/)
+- [Install Graphana to Ubuntu](https://grafana.com/docs/grafana/latest/installation/debian/)
+- [Open specific port using iptables](https://ru.stackoverflow.com/questions/347145/%D0%9A%D0%B0%D0%BA-%D0%BE%D1%82%D0%BA%D1%80%D1%8B%D1%82%D1%8C-%D0%BF%D0%BE%D1%80%D1%82-%D0%B2-ubuntu)
+- [Open specific port using ufw](https://askubuntu.com/questions/911765/open-port-on-ubuntu-16-04)
 
 - Open Postgres shell and execute the following:
 
@@ -24,6 +28,14 @@ Statistic application basic on COVID-19 example
 create database stat;
 create user stater with encrypted password 'qwerty12345';
 grant ALL privileges on database stat to stater;
+# connect
+sudo -u postgres psql
+# use db
+\c stat
+# describe table
+\d stats
+# exit
+\q
 ```
 
 - Open terminal
