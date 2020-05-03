@@ -1,5 +1,6 @@
 @import './fontello.css';
 @import './pagination.css';
+@import './devices/mobile.device.css';
 
 body {
   margin: 0;
@@ -32,12 +33,6 @@ h1 {
 
 a {
   color: inherit;
-}
-
-@media (min-width: 400px) {
-  body {
-    font-size: 14px;
-  }
 }
 
 .full-flex {
