@@ -14,6 +14,15 @@ html {
 .main-title,
 .icon-statusnet,
 .icon-chart-line,
-.icon-chart-pie {
+.icon-chart-pie,
+.btn,
+.selection,
+.selectContainer input {
   color: #ffffff;
+}
+
+.selectContainer,
+.btn {
+  background: none !important;
+  border-color: #d8dbdf !important;
 }
