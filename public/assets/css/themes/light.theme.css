@@ -12,7 +12,8 @@ main,
 .icon-chart-pie,
 .btn,
 .selection,
-.selectContainer input {
+.selectContainer input,
+.item-container {
   color: #2b2a29;
 }
 

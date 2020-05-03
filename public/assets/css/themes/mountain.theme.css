@@ -17,7 +17,8 @@ html {
 .icon-chart-pie,
 .btn,
 .selection,
-.selectContainer input {
+.selectContainer input,
+.item-container {
   color: #ffffff;
 }
 
