@@ -40,4 +40,14 @@ export default class RussianLocale implements ILocale {
       forms: ['страна', 'страны', 'стран'],
     },
   }
+  nav = {
+    main: {
+      title: 'Статистика',
+      link: '/',
+    },
+    graph: {
+      title: 'Графики',
+      link: '/chart',
+    },
+  }
 }

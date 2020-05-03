@@ -12,6 +12,8 @@ html {
 
 .nav-button,
 .main-title,
-.icon-statusnet {
+.icon-statusnet,
+.icon-chart-line,
+.icon-chart-pie {
   color: #ffffff;
 }

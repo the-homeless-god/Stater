@@ -24,7 +24,9 @@
     padding-bottom: 10px;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
+    width: 100%;
   }
 
   /* clearfix */
@@ -51,7 +53,6 @@
     cursor: pointer;
     margin-left: 10px;
     margin-right: 10px;
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
     padding: 0px 15px;
@@ -102,6 +103,36 @@
           <b>{$dictionary.author.name}</b>
         </span>
       </span>
+
+      <span
+        class:selected={segment === undefined}
+        href="."
+        rel="prefetch"
+        class="nav-link icon-chart-pie">
+        <span
+          on:click={() => {
+            window.location.href = $dictionary.nav.main.link
+          }}
+          class="nav-button">
+          <b>{$dictionary.nav.main.title}</b>
+        </span>
+      </span>
+
+      <span
+        class:selected={segment === 'chart'}
+        href="."
+        rel="prefetch"
+        class="nav-link icon-chart-line">
+        <span
+          on:click={() => {
+            window.location.href = $dictionary.nav.graph.link
+          }}
+          class="nav-button">
+          <b>{$dictionary.nav.graph.title}</b>
+        </span>
+      </span>
+    </li>
+    <li>
 
       <span class="full-flex option-picker">
         <VisitNow />

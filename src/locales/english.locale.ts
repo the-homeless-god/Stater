@@ -40,4 +40,14 @@ export default class EnglishLocale implements ILocale {
       forms: ['country', 'countries', 'countries'],
     },
   }
+  nav = {
+    main: {
+      title: 'Statistic',
+      link: '/',
+    },
+    graph: {
+      title: 'Charts',
+      link: '/chart',
+    },
+  }
 }

@@ -32,4 +32,14 @@ export default interface ILocale {
       forms: string[]
     }
   }
+  nav: {
+    main: {
+      title: string
+      link: string
+    }
+    graph: {
+      title: string
+      link: string
+    }
+  }
 }
