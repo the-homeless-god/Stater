@@ -72,11 +72,11 @@ export default class CollectTool {
   }
 
   init = async () => {
-    cron.schedule('*/35 * * * *', async () => {
-      await this.parse(false)
-    })
-    cron.schedule('0 0 0 * * *', async () => {
-      await this.parse(true)
-    })
+    // cron.schedule('*/35 * * * *', async () => {
+    //   await this.parse(false)
+    // })
+    // cron.schedule('0 0 0 * * *', async () => {
+    //   await this.parse(true)
+    // })
   }
 }

@@ -57,7 +57,7 @@
 </script>
 
 <Select
-  containerStyles="min-width: 50px; margin: 10px;"
+  containerStyles="min-width: 50px; margin: 10px; justify-content: center;"
   placeholder={$dictionary.theme.change}
   {items}
   on:select={handleSelect}

@@ -106,3 +106,34 @@
 .item-list__pagination .pagination__option.current {
   color: #747474;
 }
+
+.item-list__search {
+  width: 100%;
+  margin: 10px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: none;
+  border: none;
+}
+
+.item-list__search .icon-search {
+  color: white;
+  font-size: 18px;
+  padding: 10px;
+  background: none;
+  border: none;
+  max-width: 50px;
+  margin-right: -10px;
+}
+
+.item-list__search input {
+  font-size: 18px;
+  padding: 10px;
+  margin-bottom: 0;
+  border-radius: 0;
+  background: none;
+  outline: none;
+  border: none;
+  width: calc(100% - 100px);
+}

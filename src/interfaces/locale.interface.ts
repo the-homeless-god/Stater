@@ -32,6 +32,9 @@ export default interface ILocale {
       forms: string[]
     }
   }
+  search: {
+    text: string
+  }
   nav: {
     main: {
       title: string

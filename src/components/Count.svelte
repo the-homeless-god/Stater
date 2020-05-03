@@ -55,7 +55,7 @@
         )
         let elementValue = CommonTool.numberWithSpaces(element)
 
-        let textValue = `👁${elementValue} ${text}`
+        let textValue = `${elementValue} ${text}`
 
         acc.push({ value: element, label: textValue })
       }
@@ -83,7 +83,7 @@
 </script>
 
 <Select
-  containerStyles="min-width: 120px; margin: 10px;"
+  containerStyles="min-width: 120px; margin: 10px; justify-content: center;"
   placeholder={$dictionary.item.count.change}
   {items}
   on:select={handleSelect}

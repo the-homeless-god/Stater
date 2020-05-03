@@ -5,7 +5,7 @@ import MountainTheme from '../themes/mountain.theme'
 
 export default class EnglishLocale implements ILocale {
   short = 'en'
-  prefix = '🇺🇸English'
+  prefix = 'English'
   author = {
     name: 'Project author',
     link: 'https://vk.com/the_homeless_god',
@@ -39,6 +39,9 @@ export default class EnglishLocale implements ILocale {
       change: 'Country count',
       forms: ['country', 'countries', 'countries'],
     },
+  }
+  search = {
+    text: 'Search by country name',
   }
   nav = {
     main: {

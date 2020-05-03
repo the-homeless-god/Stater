@@ -5,7 +5,7 @@ import MountainTheme from '../themes/mountain.theme'
 
 export default class RussianLocale implements ILocale {
   short = 'ru'
-  prefix = '🇷🇺Русский'
+  prefix = 'Русский'
   author = {
     name: 'Создатель проекта',
     link: 'https://vk.com/the_homeless_god',
@@ -39,6 +39,9 @@ export default class RussianLocale implements ILocale {
       change: 'Количество стран',
       forms: ['страна', 'страны', 'стран'],
     },
+  }
+  search = {
+    text: 'Искать по названию страны',
   }
   nav = {
     main: {

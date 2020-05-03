@@ -5,13 +5,13 @@ export default class DarkTheme implements ITheme {
     switch (localePrefix) {
       case 'ru':
         this.short = 'dark'
-        this.prefix = '🏴 Тёмная'
+        this.prefix = 'Тёмная'
         break
 
       case 'en':
       default:
         this.short = 'dark'
-        this.prefix = '🏴 Dark'
+        this.prefix = 'Dark'
         break
     }
   }

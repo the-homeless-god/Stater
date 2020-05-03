@@ -44,7 +44,7 @@
 </script>
 
 <Select
-  containerStyles="min-width: 50px; margin: 10px;"
+  containerStyles="min-width: 50px; margin: 10px; justify-content: center;"
   placeholder={$dictionary.language.change}
   {items}
   isClearable={false}

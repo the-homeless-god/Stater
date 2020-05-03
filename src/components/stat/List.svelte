@@ -1,7 +1,7 @@
 <script>
   import Box from '../common/Box.svelte'
 
-  import { stats, itemCount } from '../../stores/store.ts'
+  import { stats, itemCount, dictionary } from '../../stores/store.ts'
   import ItemList from 'svelte-item-list/dist/index.js'
   import { onMount } from 'svelte'
   import { writable } from 'svelte/store'
@@ -36,6 +36,14 @@
               doubleRight: 'icon-angle-double-right',
             },
           },
+
+          search: {
+            root: 'item-list__search',
+            input: 'item-list__search-input',
+            icon: {
+              root: 'icon-search',
+            },
+          },
         },
         body: {
           enabled: false,
@@ -44,6 +52,14 @@
         header: {
           enabled: false,
           text: '',
+        },
+        search: {
+          enabled: true,
+          placeholder: $dictionary.search.text,
+          icon: {
+            enabled: true,
+          },
+          property: 'country',
         },
       },
       endpoint: {
@@ -102,6 +118,14 @@
       configuration.pagination.pageSize = value
       configuration.pagination.currentPageStore.set(0)
       configuration.pagination.currentPageStore.set(1)
+      configuration.global.isVisible = true
+    }
+  })
+
+  dictionary.subscribe(value => {
+    if (configuration) {
+      configuration.global.isVisible = false
+      configuration.global.search.placeholder = value.search.text
       configuration.global.isVisible = true
     }
   })

@@ -13,8 +13,10 @@ main,
 .btn,
 .selection,
 .selectContainer input,
-.item-container {
-  color: #2b2a29;
+.item-container .item-container,
+.item-list__search .icon-search,
+.item-list__search-input {
+  color: #2b2a29 !important;
 }
 
 .selectContainer,

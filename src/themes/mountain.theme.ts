@@ -5,13 +5,13 @@ export default class MountainTheme implements ITheme {
     switch (localePrefix) {
       case 'ru':
         this.short = 'mountain'
-        this.prefix = '🗻 Скалы'
+        this.prefix = 'Скалы'
         break
 
       case 'en':
       default:
         this.short = 'mountain'
-        this.prefix = '🗻 Mountain'
+        this.prefix = 'Mountain'
         break
     }
   }
