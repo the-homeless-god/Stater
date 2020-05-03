@@ -86,6 +86,8 @@
 
   :global(.total-stat-block) {
     display: flex;
+    width: 86%;
+    max-width: none;
   }
 </style>
 

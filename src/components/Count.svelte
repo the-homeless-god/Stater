@@ -83,7 +83,7 @@
 </script>
 
 <Select
-  containerStyles="min-width: 50px; margin: 10px;"
+  containerStyles="min-width: 120px; margin: 10px;"
   placeholder={$dictionary.item.count.change}
   {items}
   on:select={handleSelect}

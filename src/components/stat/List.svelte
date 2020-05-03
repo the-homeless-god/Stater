@@ -122,7 +122,7 @@
 
   :global(.list-stat-block) {
     display: flex;
-    width: 300px;
+    width: 26%;
   }
 
   .contry {
