@@ -113,3 +113,24 @@ sudo mkswap /swapfile
 sudo swapon /swapfile
 echo "/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab
 ```
+
+# Android Deploy
+
+- [Guide](https://web.dev/using-a-pwa-in-your-android-app/)
+- [Naming conventions](https://stackoverflow.com/questions/6273892/android-package-name-convention)
+- [Bubblewrap CLI](https://github.com/GoogleChromeLabs/bubblewrap/tree/master/packages/cli)
+- Commands
+
+```shell
+# path to Java SDK
+ls -l `which java`
+
+# init JAVA_HOME env at Mac OS
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# create application
+npx @bubblewrap/cli init --manifest=https://corona.notify.wtf/manifest.json
+
+# build application
+npx @bubblewrap/cli build
+```

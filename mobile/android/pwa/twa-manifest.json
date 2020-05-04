@@ -1,0 +1,24 @@
+{
+  "packageId": "com.zimnurov.corona.stat",
+  "host": "corona.notify.wtf",
+  "name": "COVID-19",
+  "launcherName": "COVID-19",
+  "themeColor": "#333333",
+  "navigationColor": "#000000",
+  "backgroundColor": "#FFFFFF",
+  "enableNotifications": false,
+  "startUrl": "/",
+  "iconUrl": "https://corona.notify.wtf/assets/img/logo-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "alias": "android",
+    "path": "./android.keystore"
+  },
+  "appVersionName": "1",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://corona.notify.wtf/manifest.json",
+  "fallbackType": "customtabs",
+  "appVersion": "1"
+}
