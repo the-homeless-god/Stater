@@ -120,6 +120,7 @@ echo "/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab
 - [Naming conventions](https://stackoverflow.com/questions/6273892/android-package-name-convention)
 - [Bubblewrap CLI](https://github.com/GoogleChromeLabs/bubblewrap/tree/master/packages/cli)
 - Commands
+- [gradlew fix](https://stackoverflow.com/questions/17668265/gradlew-permission-denied)
 
 ```shell
 # path to Java SDK
