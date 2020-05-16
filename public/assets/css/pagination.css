@@ -26,6 +26,7 @@
 
 .item-list__container {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -111,6 +112,7 @@
   width: 100%;
   margin: 10px 30px;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   align-items: center;
   background: none;
