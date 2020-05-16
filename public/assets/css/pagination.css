@@ -109,8 +109,8 @@
 }
 
 .item-list__search {
-  width: 100%;
-  margin: 10px 30px;
+  width: 93%;
+  margin: 10px 0px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
