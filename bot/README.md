@@ -3,6 +3,7 @@
 # bots
 
 - _ICQ_ - [@covidstatbot](https://icq.com/invite/covidstatbot)
+- _VK_ - [@covidstatbot](https://vk.com/covidstatbot)
 
 # development
 
