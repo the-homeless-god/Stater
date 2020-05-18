@@ -1,4 +1,4 @@
-# covid-stat-bot
+# All information about bots
 
 # bots
 
