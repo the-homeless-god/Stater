@@ -30,7 +30,14 @@ export default class VKBot {
   }
 
   menuHandler = () => {
-    let commandList = ['/update', '/menu']
+    let commandList = [
+      '/update',
+      '/menu',
+      '[club195478597|@covidstatbot] /update',
+      '[club195478597|@covidstatbot] /menu',
+      'меню',
+      '[club195478597|@covidstatbot] меню',
+    ]
 
     commandList.forEach((command) => {
       this.bot.command(command, (ctx: any) => {
