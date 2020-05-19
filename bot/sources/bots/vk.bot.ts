@@ -110,15 +110,25 @@ export default class VKBot {
   }
 
   startHandler = () => {
-    this.bot.command('/start', (ctx: any) => {
-      ctx.reply(`
+    let commandList = [
+      '[club195478597|@covidstatbot] Start',
+      '[club195478597|@covidstatbot] Начать',
+      '[club195478597|@covidstatbot] /Start',
+      '[club195478597|@covidstatbot] /Начать',
+      'start',
+      'начать',
+      '/начать',
+      '/start',
+    ]
+    commandList.forEach(command => {
+      this.bot.command(command, (ctx: any) => {
+        ctx.reply(`
         Добро пожаловать!
         Здесь Вы можете узнать последнюю информацию о статистике по COVID-19
         Вся информация берётся из https://corona.notify.wtf
         Напишите "/update" или "/menu" чтобы получить меню
-      `)
-
-      console.log(ctx)
+      `, null, this.getButtonPreview())
+      })
     })
   }
 }
