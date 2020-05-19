@@ -38,6 +38,11 @@ sudo -u postgres psql
 \q
 ```
 
+- For run at Windows 10
+```shell
+C:\Program Files\PostgreSQL\12\bin>psql.exe -U postgres
+```
+
 - Open terminal
 
 ```shell
