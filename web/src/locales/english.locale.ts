@@ -52,5 +52,9 @@ export default class EnglishLocale implements ILocale {
       title: 'Charts',
       link: '/chart',
     },
+    bot: {
+      title: 'Bots',
+      link: '/bot',
+    },
   }
 }

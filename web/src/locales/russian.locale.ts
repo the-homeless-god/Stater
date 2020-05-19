@@ -52,5 +52,9 @@ export default class RussianLocale implements ILocale {
       title: 'Графики',
       link: '/chart',
     },
+    bot: {
+      title: 'Боты',
+      link: '/bot',
+    },
   }
 }

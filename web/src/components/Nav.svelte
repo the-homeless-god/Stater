@@ -131,6 +131,19 @@
           <b>{$dictionary.nav.graph.title}</b>
         </span>
       </span>
+      <span
+        class:selected={segment === 'bot'}
+        href="."
+        rel="prefetch"
+        class="nav-link icon-chart-line">
+        <span
+          on:click={() => {
+            window.location.href = $dictionary.nav.bot.link
+          }}
+          class="nav-button">
+          <b>{$dictionary.nav.bot.title}</b>
+        </span>
+      </span>
     </li>
     <li>
 
